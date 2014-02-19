@@ -20,6 +20,7 @@ Bundle 'tComment'
 Bundle 'fugitive.vim'
 Bundle 'The-NERD-tree'
 Bundle 'Tabular'
+Bundle 'bronson/vim-trailing-whitespace'
 
 filetype plugin indent on
 
@@ -160,7 +161,7 @@ set shiftwidth=4 "Indent/outdent by four columns"
 set shiftround   "Always indent.outdent to the nearest tabstop"
 
 set list                        "enable viewing tabs
-set listchars=tab:>-,trail:-    "make it nicer
+set listchars=tab:>>,trail:•    "make it nicer
 
 " set textwidth=80 "Use 80 column lines
 
