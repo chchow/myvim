@@ -61,12 +61,12 @@ Bundle 'bling/vim-airline'
         let g:airline_symbols = {}
     endif
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '◀'
-    let g:airline_symbols.linenr = '␤'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    " let g:airline_powerline_fonts = 1
+    let g:airline_powerline_fonts = 1
+    " let g:airline_left_sep = '▶'
+    " let g:airline_right_sep = '◀'
+    " let g:airline_symbols.linenr = '␤'
+    " let g:airline_symbols.branch = '⎇'
+    " let g:airline_symbols.paste = 'ρ'
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -74,16 +74,17 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   colorscheme darkblue
   set hlsearch
-  set cursorline
+  " set cursorline
   set t_Co=16
-  hi CursorLine term=bold cterm=bold ctermbg=darkgrey
-  set cursorcolumn
+  " hi CursorLine term=bold cterm=bold ctermbg=darkgrey
+  " set cursorcolumn
 endif
 
 " Fix number of colors for xterm
 if &term =~ "xterm" && &t_Co == 8
   set t_Co=16
-  hi CursorLine term=NONE cterm=bold ctermbg=8
+
+  " hi CursorLine term=NONE cterm=bold ctermbg=8
   hi Folded ctermbg=8 ctermfg=14
   hi FoldColumn ctermbg=8 ctermfg=14
   hi Visual term=NONE cterm=bold ctermbg=10 ctermfg=8
@@ -105,6 +106,7 @@ set wrap
 nmap ' :cn
 nmap <F1> <Esc>
 imap <F1> <Esc>
+imap jj <Esc>
 
 
 
@@ -203,6 +205,7 @@ map <Leader>gg :GitGrep <C-r><C-w>
 
 map <Leader>n :set number!<CR>
 map <Leader>l :set list!<CR>
+map <Leader>s :set spell!<CR>
 
 map <Leader>t :FufBuffer<CR>
 map <C-t> :FufCoverageFile<CR>
@@ -220,12 +223,16 @@ map <Leader>tr :NERDTreeToggle<CR>
 " Tabularize json
 map <Leader>ij :Tabularize /:\z\s/<CR>
 
+" Get rid of trailing
+map <Leader>tr :%s/\s* $//gc<CR>
+
 map <Leader>r :!perl %<CR>
 map <Leader>rd :!perl -d %<CR>
 map <Leader>prv :!prove -v %<CR>
 map <Leader>sc :!perl -c %<CR>
 map <Leader>a :Ack <C-r><C-w>
 map <Leader>rp :%s/<C-r>0//gc
+map <Leader>t :!perltidy<CR>
 
 " Perl module opener
 map <Leader>omv y<C-w>np0ie lib/<esc>A.pm<esc>:%s/::/\//g<CR>:noh<CR>v$y:bd!<CR>:<C-r>0<CR>
